@@ -360,16 +360,17 @@ def _insert_tweets(connection,input_tweets):
     ######################################## 
     # STEP 2: perform the actual SQL inserts
     ######################################## 
-    with connection.begin() as trans:
+    
+    #with connection.begin() as trans:
 
         # use the bulk_insert function to insert most of the data
-        bulk_insert(connection, 'users', users)
-        bulk_insert(connection, 'users', users_unhydrated_from_tweets)
-        bulk_insert(connection, 'users', users_unhydrated_from_mentions)
-        bulk_insert(connection, 'tweet_mentions', tweet_mentions)
-        bulk_insert(connection, 'tweet_tags', tweet_tags)
-        bulk_insert(connection, 'tweet_media', tweet_media)
-        bulk_insert(connection, 'tweet_urls', tweet_urls)
+    bulk_insert(connection, 'users', users)
+    bulk_insert(connection, 'users', users_unhydrated_from_tweets)
+    bulk_insert(connection, 'users', users_unhydrated_from_mentions)
+    bulk_insert(connection, 'tweet_mentions', tweet_mentions)
+    bulk_insert(connection, 'tweet_tags', tweet_tags)
+    bulk_insert(connection, 'tweet_media', tweet_media)
+    bulk_insert(connection, 'tweet_urls', tweet_urls)
 
         # the tweets data cannot be inserted using the bulk_insert function because
         # the geo column requires special SQL code to generate the column;
