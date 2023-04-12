@@ -105,10 +105,6 @@ def _bulk_insert_sql(table, rows):
         '''
         +
         ','.join([ '('+','.join([f':{key}{i}' for key in keys])+')' for i in range(len(rows))])
-        +
-        '''
-        ON CONFLICT DO NOTHING
-        '''
         )
 
 
